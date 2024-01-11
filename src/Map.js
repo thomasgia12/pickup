@@ -9,7 +9,7 @@ const Map = () => {
     width: '100%',
     height: 'calc(100vh)', // Adjust the height based on your desired space
     margin: 'auto',
-    opacity: 0.9,
+    opacity: 1,
     position: 'relative',
   };
 

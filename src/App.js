@@ -1,6 +1,7 @@
 import './App.css'; // Import the regular CSS file
 import Map from './Map.js';
 import logo from './logo.png';
+import menu_icon from './menu.svg';
 
 function App() {
   return (
@@ -9,8 +10,8 @@ function App() {
         <h1>Melbourne's First Pickup Basketball Map</h1>
       </div> */}
       <Map />
-      {/* !! add logo in bottom left
-      <img src={logo} alt="Logo" style={{ position: 'absolute', bottom: '10px', left: '10px' }} /> */}
+      <img src={menu_icon} alt="Menu" style={{ position: 'absolute', top: '30px', left: '40px', height: '5vh' }} />
+      <img src={logo} alt="Logo" style={{ position: 'absolute', bottom: '20px', left: '40px', height: '20vh' }} />
     </div>
   );
 }
