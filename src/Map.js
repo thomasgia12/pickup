@@ -1,6 +1,6 @@
 // Map.js
 
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 import MarkerInfoWindow from './MarkerInfoWindow';
 
@@ -38,6 +38,12 @@ const Map = () => {
   const handleMarkerClick = (marker) => {
     setSelectedMarker(marker);
   };
+
+  const closeInfoWindow = () => {
+    setSelectedMarker(null);
+  };
+
+  const memoizedCenter = useMemo(() => center, []);
 
   return (
     <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}>
@@ -176,7 +182,7 @@ const Map = () => {
             rotateControl: false,
             fullscreenControl: false,
           }}
-          center={center}
+          center={memoizedCenter}
           zoom={initialZoom}
           onClick={handleMapClick}
         >
@@ -192,7 +198,7 @@ const Map = () => {
             />
           ))}
 
-          {selectedMarker && <MarkerInfoWindow selectedMarker={selectedMarker} />}
+          {selectedMarker && <MarkerInfoWindow selectedMarker={selectedMarker} onCloseInfoWindow={closeInfoWindow} />}
         </GoogleMap>
       </div>
     </LoadScript>
