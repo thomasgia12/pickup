@@ -6,6 +6,7 @@ import { InfoWindow } from '@react-google-maps/api';
 const MarkerInfoWindow = ({ selectedMarker }) => {
   const closeInfoWindow = () => {
     // Implement the logic to close the InfoWindow if needed
+    
   };
 
   const handleCommentsChange = (event) => {

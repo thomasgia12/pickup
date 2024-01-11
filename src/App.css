@@ -1,44 +1,11 @@
-.App {
-  text-align: center;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-h1 {
-  /* centre */
-  text-align: center;
-}
-
-/* App.css */
-
 body {
   margin: 0;
   padding: 0;
   font-family: 'Arial', sans-serif;
-  background-image: url('../public/bball.jpg'); /* Path to the image in the public folder */
+  background-image: url('../public/bball.jpg'); /* Updated path to the image in the public folder */
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-}
-
-header {
-  background-color: rgba(255, 140, 0, 0.7); /* Dark orange with 70% opacity */
-  color: white;
-  padding: 1em;
-  text-align: center;
-}
-
-header h1 {
-  margin: 0;
-  font-size: 2em;
-  letter-spacing: 2px;
 }
 
 .container {
@@ -55,17 +22,36 @@ header h1 {
   border-radius: 8px;
 }
 
-/* Add any additional styling for the basketball-themed color scheme */
-/* App.css */
-
+/* Global styles */
 html, body {
   height: 100%;
-  margin: 0;
 }
 
-/* Adjust the container size for smaller screens */
-@media (max-width: 600px) {
-  div {
-    width: 100%;
+/* Center the app content */
+.App {
+  text-align: center;
+}
+
+/* Rotate the logo */
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
   }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Center the h1 element */
+h1 {
+  text-align: center;
+}
+
+/* Style the header */
+.header {
+  background-color: rgba(255, 140, 0, 0.7);
+  color: white;
+  padding: 1em;
+  text-align: center;
+  border: 2px solid #fff;
 }
