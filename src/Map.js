@@ -6,13 +6,16 @@ import MarkerInfoWindow from './MarkerInfoWindow';
 
 const Map = () => {
   const containerStyle = {
-    width: '100%',
-    height: '400px',
+    width: '80%',
+    height: 'calc(100vh - 100px)', // Adjust the height based on your desired space
+    margin: 'auto',
+    opacity: 0.9,
+    position: 'relative',
   };
 
   const center = {
-    lat: -37.8136, // Melbourne, Victoria - Replace with your desired latitude
-    lng: 144.9631, // Melbourne, Victoria - Replace with your desired longitude
+    lat: -37.8136,
+    lng: 144.9631,
   };
 
   const initialZoom = 8;
@@ -38,26 +41,31 @@ const Map = () => {
 
   return (
     <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}>
-      <GoogleMap
-        mapContainerStyle={containerStyle}
-        center={center}
-        zoom={initialZoom}
-        onClick={handleMapClick}
-      >
-        {markers.map((marker) => (
-          <Marker
-            key={marker.id}
-            position={{ lat: marker.lat, lng: marker.lng }}
-            onClick={() => handleMarkerClick(marker)}
-            icon={{
-              url: 'https://example.com/custom-marker.png',
-              scaledSize: new window.google.maps.Size(30, 30),
-            }}
-          />
-        ))}
+      <div style={containerStyle}>
+        <GoogleMap
+          mapContainerStyle={{
+            width: '100%',
+            height: '100%',
+          }}
+          center={center}
+          zoom={initialZoom}
+          onClick={handleMapClick}
+        >
+          {markers.map((marker) => (
+            <Marker
+              key={marker.id}
+              position={{ lat: marker.lat, lng: marker.lng }}
+              onClick={() => handleMarkerClick(marker)}
+              icon={{
+                url: 'bball_marker.png',
+                scaledSize: new window.google.maps.Size(30, 30),
+              }}
+            />
+          ))}
 
-        {selectedMarker && <MarkerInfoWindow selectedMarker={selectedMarker} />}
-      </GoogleMap>
+          {selectedMarker && <MarkerInfoWindow selectedMarker={selectedMarker} />}
+        </GoogleMap>
+      </div>
     </LoadScript>
   );
 };

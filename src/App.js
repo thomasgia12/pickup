@@ -5,7 +5,9 @@ import GoogleMapComponent from './Map.js';
 function App() {
   return (
     <div>
-    <h1>Melbourne's First Pickup Basketball Map</h1>
+      <div className='header'>
+        <h1>Melbourne's First Pickup Basketball Map</h1>
+      </div>
     <GoogleMapComponent />
   </div>
   );
