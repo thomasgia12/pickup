@@ -18,7 +18,7 @@ const Map = () => {
     lng: 144.9631,
   };
 
-  const initialZoom = 8;
+  const initialZoom = 9;
 
   const [markers, setMarkers] = useState([]);
   const [selectedMarker, setSelectedMarker] = useState(null);
@@ -44,6 +44,11 @@ const Map = () => {
   };
 
   const memoizedCenter = useMemo(() => center, []);
+
+  const handleDeleteMarker = (markerId) => {
+    // Remove the marker with the specified id from the markers array
+    setMarkers((prevMarkers) => prevMarkers.filter((marker) => marker.id !== markerId));
+  };
 
   return (
     <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}>
@@ -187,18 +192,18 @@ const Map = () => {
           onClick={handleMapClick}
         >
           {markers.map((marker) => (
-            <Marker
-              key={marker.id}
-              position={{ lat: marker.lat, lng: marker.lng }}
-              onClick={() => handleMarkerClick(marker)}
-              icon={{
-                url: 'bball_marker.png',
-                scaledSize: new window.google.maps.Size(30, 30),
-              }}
-            />
+              <Marker
+                key={marker.id}
+                position={{ lat: marker.lat, lng: marker.lng }}
+                onClick={() => handleMarkerClick(marker)}
+                icon={{
+                  url: 'bball_marker.png', 
+                  scaledSize: new window.google.maps.Size(30, 30),
+                }}
+              />
           ))}
 
-          {selectedMarker && <MarkerInfoWindow selectedMarker={selectedMarker} onCloseInfoWindow={closeInfoWindow} />}
+          {selectedMarker && <MarkerInfoWindow selectedMarker={selectedMarker} onCloseInfoWindow={closeInfoWindow} onDeleteMarker={handleDeleteMarker} />}
         </GoogleMap>
       </div>
     </LoadScript>
